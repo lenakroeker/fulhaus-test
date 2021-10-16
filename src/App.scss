@@ -1,0 +1,424 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text&family=Montserrat:wght@500&display=swap");
+$white: #fff;
+$canvas: #f7efe7;
+$green: #003941;
+$black: #000;
+$seeThruBlack: #000000cc;
+$ease: 0.6s ease-in;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $canvas;
+  font-family: "Crimson Text", serif;
+  overflow-x: hidden;
+}
+
+.App {
+  overflow: hidden;
+  position: relative;
+}
+.header {
+  background: $white;
+  color: $black;
+  height: 70px;
+  display: flex;
+  width: 100vw;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.151);
+}
+
+.logo {
+  padding: 20px 0 0 20px;
+  background: $white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $ease;
+  text-shadow: 1px 1px 1px #03030300;
+}
+
+.logo:hover {
+  color: $green;
+  transition: $ease;
+  text-shadow: 1px 1px 1px #03030356;
+}
+
+button {
+  background: $black;
+  color: $white;
+  font-family: "Montserrat", sans-serif;
+  width: 120px;
+  height: 43px;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  display: block;
+  transition: $ease;
+}
+
+button:hover {
+  color: $canvas;
+  background: $green;
+  transition: $ease;
+}
+
+.cart-button {
+  position: absolute;
+  right: 23px;
+  top: 11px;
+}
+
+.checkout-button {
+  width: 100%;
+}
+
+.cart {
+  width: 90vw;
+  height: calc(100vh - 70px);
+  background-color: $white;
+  position: absolute;
+  right: 0;
+  padding: 30px;
+  transition: $ease;
+  z-index: 20;
+}
+
+.cart2 {
+  width: 90vw;
+  height: calc(100vh - 70px);
+  background-color: $white;
+  position: absolute;
+  right: -90vw;
+  padding: 30px;
+  transition: $ease;
+  z-index: 20;
+}
+
+.shop-button {
+  margin: 20px auto;
+}
+
+.shop-button:hover {
+  background: $white;
+  color: $green;
+  transition: $ease;
+}
+
+.hero {
+  background: $green;
+  color: $white;
+  text-align: center;
+  font-weight: 400;
+  font-size: 45px;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  padding: 30px 0;
+  margin: 0 10px;
+  border-left: 1px solid $green;
+  border-right: 1px solid $green;
+}
+
+.product {
+  border-radius: 38.85px;
+  overflow: hidden;
+  height: 300px;
+  margin: 30px;
+  cursor: pointer;
+  position: relative;
+}
+
+.overlay {
+  display: none;
+}
+
+.look {
+  position: absolute;
+  bottom: 20px;
+  width: 150px;
+  text-align: center;
+  left: 75px;
+}
+
+.item-name {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.brand {
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.price {
+  position: absolute;
+  bottom: 28px;
+  right: 30px;
+  font-size: 25px;
+}
+
+.blackout {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 30;
+  background-color: rgba(0, 0, 0, 0.363);
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  margin: 6vh 0;
+  padding-top: 50px;
+  height: 88vh;
+  width: 70vw;
+  background-color: $white;
+  border-radius: 10px;
+}
+
+.modal-x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal-info {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.modal-desc {
+  margin-top: 20px;
+}
+
+.modal-btn {
+  position: absolute;
+  width: 63vw;
+  bottom: 20px;
+}
+
+.modal-price {
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.add {
+  position: absolute;
+  bottom: 24px;
+  left: 22px;
+  font-size: 16px;
+  padding: 6px 8px;
+}
+
+.add:hover {
+  background-color: $black;
+}
+
+.cart-content {
+  height: 65vh;
+  overflow-y: scroll;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $seeThruBlack;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $green;
+}
+
+.cart-item {
+  min-height: 150px;
+  margin: 20px;
+  border-bottom: 1px solid black;
+  display: flex;
+  position: relative;
+}
+
+.cart-pic {
+  grid-area: pic;
+  width: 50%;
+  height: 60%;
+}
+
+.empty {
+  text-align: center;
+  font-size: 25px;
+  margin: 30px 0;
+}
+
+.cart-info {
+  grid-area: info;
+  width: 300px;
+  font-size: 18px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.price-cart {
+  margin: 10px;
+  font-size: 18px;
+}
+
+.cart-sum {
+  bottom: 30px;
+  position: absolute;
+  width: 80%;
+}
+
+.total {
+  font-size: 36px;
+}
+
+.total-num {
+  display: inline;
+  position: absolute;
+  right: 0px;
+}
+
+.remove {
+  grid-area: remove;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  .header {
+    height: 80px;
+  }
+  .logo {
+    padding: 15px 0 0 40px;
+    font-size: 36px;
+  }
+
+  button {
+    width: 155px;
+    height: 55px;
+    font-size: 24px;
+  }
+
+  .hero {
+    font-size: 96px;
+    height: 140vh;
+    margin: 0 80px;
+  }
+
+  .grid {
+    padding: 30px 0;
+    margin: 0 80px;
+  }
+
+  .modal {
+    display: none;
+  }
+
+  .cart {
+    width: 45vw;
+    min-height: calc(100vh - 80px);
+    background-color: $white;
+    position: absolute;
+    right: 0;
+    padding: 30px;
+    transition: $ease;
+    z-index: 20;
+  }
+
+  .cart2 {
+    width: 45vw;
+    min-height: calc(100vh - 80px);
+    background-color: $white;
+    position: absolute;
+    right: -45vw;
+    padding: 30px;
+    transition: $ease;
+    z-index: 20;
+  }
+
+  .overlay {
+    opacity: 0;
+    display: block;
+    background-color: $seeThruBlack;
+    z-index: 4;
+    position: absolute;
+    border-radius: 38.85px;
+    width: 300px;
+    height: 300px;
+    color: $white;
+    transition: $ease;
+    padding: 32px;
+  }
+
+  .overlay:hover {
+    opacity: 1;
+  }
+
+  .look {
+    display: none;
+  }
+
+  .cart-item {
+    height: auto;
+    margin: 20px;
+    border-bottom: 1px solid black;
+    display: flex;
+    position: relative;
+  }
+
+  .cart-pic {
+    width: 40%;
+  }
+
+  .cart-info {
+    grid-area: info;
+    width: 300px;
+    font-size: 24px;
+    margin-right: 20px;
+    margin-left: 0;
+  }
+
+  .brand {
+    font-weight: 200;
+  }
+
+  .price-cart {
+    position: absolute;
+    bottom: 0px;
+    font-size: 24px;
+  }
+
+  .cart-content {
+    height: 55vh;
+  }
+
+  .cart-sum {
+    width: 90%;
+  }
+}

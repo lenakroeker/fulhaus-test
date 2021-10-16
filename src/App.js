@@ -1,22 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.scss";
+import Header from "./components/header";
+import Hero from "./components/hero";
+import Grid from "./components/grid";
 
 function App() {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    fetch(`https://main-api.fulhaus.com/fulhaus-tech-test/get-products`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setData(result);
+        console.log(result);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Header />
+        <Hero />
+        <Grid data={data} />
       </header>
     </div>
   );
