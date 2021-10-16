@@ -3,6 +3,8 @@ import "./App.scss";
 import Header from "./components/header";
 import Hero from "./components/hero";
 import Grid from "./components/grid";
+import GlobalStyle from "./globalStyles";
+import styled from "styled-components";
 
 function App() {
   const [data, setData] = useState();
@@ -23,14 +25,18 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Header />
-        <Hero />
-        <Grid data={data} />
-      </header>
-    </div>
+    <AppBody>
+      <GlobalStyle />
+      <Header />
+      <Hero />
+      <Grid data={data} />
+    </AppBody>
   );
 }
+
+const AppBody = styled.div`
+  overflow-x: hidden;
+  position: relative;
+`;
 
 export default App;

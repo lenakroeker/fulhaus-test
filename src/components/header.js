@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import style from "../styleConstants";
+import styled from "styled-components";
 
 import CartItem from "./cartItem";
 
@@ -26,37 +28,113 @@ export const Header = () => {
 
   return (
     <>
-      <div className="header">
-        <div className="logo"> Fülhaus Shop</div>
-        <button className="cart-button" onClick={() => dropHandle()}>
-          Cart
-        </button>
-      </div>
+      <Head>
+        <Logo> Fülhaus Shop</Logo>
+        <CartBtn onClick={() => dropHandle()}>Cart</CartBtn>
+      </Head>
 
       {/* cart stuff */}
       <div className={dropOpen ? "cart" : "cart2"}>
-        <div className="cart-content">
+        <CartContent>
           {cartArray && cartArray.length > 0 ? (
             cartArray.map((item) => {
               return <CartItem item={item} />;
             })
           ) : (
-            <div className="empty">Your Cart is Empty :(</div>
+            <Empty>Your Cart is Empty :(</Empty>
           )}
-        </div>
-        <div className="cart-sum">
+        </CartContent>
+        <CartSum>
           {cartArray && cartArray.length > 0 ? (
-            <div className="total">
-              Total:<div className="total-num">${total.toFixed(2)}</div>
-            </div>
+            <Total>
+              Total:<TotalNum>${total.toFixed(2)}</TotalNum>
+            </Total>
           ) : (
             <></>
           )}
-          <button className="checkout-button">Checkout</button>
-        </div>
+          <CheckoutBtn>Checkout</CheckoutBtn>
+        </CartSum>
       </div>
     </>
   );
 };
+
+const Head = styled.div`
+  background: ${style.white};
+  color: ${style.black};
+  height: 70px;
+  display: flex;
+  width: 100vw;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.151);
+  position: fixed;
+  z-index: 100;
+  @media only screen and (min-width: 600px) {
+    height: 80px;
+    position: relative;
+  }
+`;
+
+const Logo = styled.div`
+  padding: 20px 0 0 20px;
+  background: ${style.white};
+  font-family: "Montserrat", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: ${style.ease};
+  text-shadow: 1px 1px 1px #03030300;
+  &:hover {
+    color: ${style.green};
+    transition: ${style.ease};
+    text-shadow: 1px 1px 1px #03030356;
+  }
+  @media only screen and (min-width: 600px) {
+    padding: 15px 0 0 40px;
+    font-size: 36px;
+  }
+`;
+
+const CartBtn = styled.button`
+  position: absolute;
+  right: 23px;
+  top: 11px;
+`;
+
+const CartContent = styled.div`
+  height: 65vh;
+  overflow-y: scroll;
+  @media only screen and (min-width: 600px) {
+    height: 55vh;
+  }
+`;
+
+const Empty = styled.div`
+  text-align: center;
+  font-size: 25px;
+  margin: 30px 0;
+`;
+
+const CartSum = styled.div`
+  bottom: 30px;
+  position: absolute;
+  width: 80%;
+  @media only screen and (min-width: 600px) {
+    width: 90%;
+  }
+`;
+
+const Total = styled.div`
+  font-size: 36px;
+`;
+
+const TotalNum = styled.div`
+  display: inline;
+  position: absolute;
+  right: 0px;
+`;
+
+const CheckoutBtn = styled.button`
+  width: 100%;
+`;
 
 export default Header;
